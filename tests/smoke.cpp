@@ -25,5 +25,9 @@ int main()
     const auto* wide_plain = wide.crypt_get();
     assert(std::wcscmp(wide_plain, L"wide string") == 0);
 
+    auto same_a = xorstr("same literal");
+    auto same_b = xorstr("same literal");
+    assert(std::memcmp(same_a.get(), same_b.get(), (same_a.size() + 1) * sizeof(char)) != 0);
+
     return 0;
 }

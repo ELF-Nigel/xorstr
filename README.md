@@ -55,6 +55,7 @@ ctest --test-dir build-noavx --output-on-failure
 
 # noteworthy things
 * All keys are 64bit and generated during compile time.
+* Every `xorstr(...)` call site gets a distinct compile-time seed, so identical literals in different locations do not reuse the same keystream.
 * Data blocks go in increments of 16 bytes so some space may be wasted.
 * The code has been crafted so that all the data would be embedded directly into code and not stored on .rdata and such.
 * The entirety of string encryption and decryption will be inlined.
